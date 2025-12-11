@@ -230,6 +230,21 @@ function cleanupUser(id) {
     }
 }
 
+socket.on("mic-changed", data => {
+    socket.to(data.room).emit("mic-changed", data);
+});
+socket.on("cam-changed", data => {
+    socket.to(data.room).emit("cam-changed", data);
+});
+socket.on("hand-changed", data => {
+    socket.to(data.room).emit("hand-changed", data);
+});
+socket.on("reaction", data => {
+    socket.to(data.room).emit("reaction", data);
+});
+
+
+
 // ==================== START SERVER ====================
 server.listen(PORT, () => {
     console.log(`Server đang chạy trên port ${PORT}`);
